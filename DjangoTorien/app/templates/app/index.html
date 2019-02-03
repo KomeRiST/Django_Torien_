@@ -2,32 +2,78 @@
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Django</h1>
-    <p class="lead">Django is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/cover.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://www.djangobook.com/en/2.0/index.html">Learn more &raquo;</a></p>
+<div class="parallax">
+    <div id="group1" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <video loop="" muted="" autoplay="" class="embed-responsive-item img-responsive" width="100%" height="auto" allowfullscreen="">
+            <source src="/media/video.mp4">
+        </video>
+      </div>
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="title">
+                <h1 class="cover-heading">Прикрой свою страницу.</h1>
+                <p class="lead">Обложка представляет собой одностраничный шаблон для построения простых и красивых домашних страниц. Скачать, Редактировать текст, и добавить свой собственный полноэкранный фон фото, чтобы сделать его свой собственный.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default">Узнать больше</a>
+                </p>
+            </div>
+      </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
+
+    <div id="group3" class="parallax__group">
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="title">
+                <h1 class="cover-heading">Прикрой свою страницу.</h1>
+                <p class="lead">Обложка представляет собой одностраничный шаблон для построения простых и красивых домашних страниц. Скачать, Редактировать текст, и добавить свой собственный полноэкранный фон фото, чтобы сделать его свой собственный.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default">Узнать больше</a>
+                </p>
+            </div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+
+    <div id="group4" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <!--<div class="title">Base Layer</div>-->
+      </div>
+      <div class="parallax__layer parallax__layer--back">
+        <!--<div class="title">Background Layer</div>-->
+      </div>
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title">TORIEN</div>
+      </div>
     </div>
-</div>
+
+    <div id="group5" class="parallax__group">
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="title">Foreground Layer</div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+
+    <div id="group6" class="parallax__group">
+      <div class="parallax__layer parallax__layer--back">
+        <div class="title">Background Layer</div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+
+    <div id="group7" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
