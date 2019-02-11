@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\static\app\content\parallax.css" />
+    <Content Include="app\static\app\scripts\jquery-3.3.1.min.js" />
+    <Content Include="app\static\app\scripts\myjs.js" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
