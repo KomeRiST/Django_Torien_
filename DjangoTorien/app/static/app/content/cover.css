@@ -10,33 +10,39 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-    color: #333;
-    text-shadow: none; /* Prevent inheritence from `body` */
-    background-color: #fff;
-    border: 1px solid #fff;
+.btn-default {
+    color: #f7a990;
+    padding: 7px;
+    border-radius: 7px;
+    text-shadow: none;
+    background-color: #b1340eb8;
+    border: 2px solid #ffb59d;
 }
+
+    .btn-default:hover, .btn-default:focus {
+        color: #f7a990;
+        padding: 7px;
+        border-radius: 7px;
+        text-shadow: none;
+        background-color: #b1340eb8;
+        border: 2px solid #ffb59d;
+    }
 
 
 /*
  * Base structure
  */
-
-html,
-body {
-    height: 100vh;
-    /*background-color: #333;*/
+.rowheight{height: 100%;}
+@media screen and (max-width: 767px){
+    .collectionheight {
+        height: 50%;
+    }
 }
-
-body {
-    /*color: #fff;*/
-    text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,.5);
-    /*box-shadow: inset 0 0 100px rgba(0,0,0,.5);*/
+@media screen and (min-width: 768px) {
+    .collectionheight {
+        height: 100%;
+    }
 }
-
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
     display: table;

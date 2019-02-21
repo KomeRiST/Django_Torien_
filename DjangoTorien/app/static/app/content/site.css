@@ -40,3 +40,32 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.cover-heading {
+    color: #b1340e;
+    text-shadow: 0 0 80px #ff5722d9, 0 0 60px #ff5722d9, 0 0 40px #ff5722d9, 0 0 20px #ff5722d9, 0 0 0px #ff5722d9, -1px -1px 1px #ff5722d9, 1px 1px 1px #ff5722d9, -1px 1px 1px #ff5722d9, 1px -1px 1px #ff5722d9;
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    video {
+        height: 300%;
+        top: -100%;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    video {
+        width: 300%;
+        left: -100%;
+    }
+}
