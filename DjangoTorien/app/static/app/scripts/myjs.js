@@ -189,7 +189,7 @@ var swipe = function (e, settings) {
 $(document).ready(function () {
     var pages = 6,
         scrolling = false,
-        hei = this.activeElement.offsetHeight,
+        hei = document.getElementById('parallax').offsetHeight,
         currentPage = 1;
 
     /*****************************
@@ -236,6 +236,8 @@ $(document).ready(function () {
     //    }
     //});
 
+    var touch_position; // Координата нажатия
+
     function MyFunc(e) {
         if (!scrolling) {
             if (e.type == 'swipe') {
@@ -250,6 +252,34 @@ $(document).ready(function () {
                 } else {
                     navigateDown();
                 }
+            } else if (e.type == 'touchstart') {
+                console.log("touchstart");
+                // При начальном нажатии получить координаты
+                touch_position = e.touches[0].pageY;
+            } else if (e.type == 'touchmove') {
+                console.log("touchmove");
+                e.preventDefault();
+                e.stopPropagation();
+            } else if (e.type == 'touchend') {
+                console.log("touchend");
+                // При движении нажатия отслеживать направление движения
+                var tmp_move = touch_position - e.changedTouches[0].pageY;
+                // Сдвиг достаточный?
+                if (Math.abs(tmp_move) < 50) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                if (tmp_move < 0) {
+                    console.log("Листаем вверх");
+                    navigateUp();
+                    // Листаем вправо
+                }
+                else {
+                    console.log("Листаем вниз");
+                    navigateDown();
+                    // Листаем влево
+                }
+                touch_position = tmp_move;
             }
         }
     }
@@ -257,13 +287,22 @@ $(document).ready(function () {
     //var el = document.getElementById('parallax');
     var el = document;
     swipe(el);
-    el.addEventListener("swipe", function (e) {
-        MyFunc(e);
-    });
+    //el.addEventListener("swipe", function (e) {
+    //    MyFunc(e);
+    //});
     el.addEventListener("mousewheel", function (e) {
         MyFunc(e);
     });
     el.addEventListener("DOMMouseScroll", function (e) {
+        MyFunc(e);
+    });
+    el.addEventListener("touchstart", function (e) {
+        MyFunc(e);
+    });
+    el.addEventListener("touchmove", function (e) {
+        MyFunc(e);
+    });
+    el.addEventListener("touchend", function (e) {
         MyFunc(e);
     });
 });

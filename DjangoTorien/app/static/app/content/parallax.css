@@ -4,9 +4,10 @@
     height: 500px; /* fallback for older browsers */
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     -webkit-perspective: 300px;
     perspective: 300px;
+    touch-action: none;
 }
 
 .parallax__group {
