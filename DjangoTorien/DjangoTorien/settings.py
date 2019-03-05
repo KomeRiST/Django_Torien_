@@ -26,13 +26,14 @@ SECRET_KEY = '6bc591ff-124d-4602-9294-6d2a980c5d1b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["torien.pythonanywhere.com",]
+ALLOWED_HOSTS = ["torien.pythonanywhere.com", "localhost", ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'app',
+    'colorfield',
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',

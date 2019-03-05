@@ -6,16 +6,26 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
+import app.models as M
 
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
+    #categories = M.Category.objects.all()[:9]
+    th = M.Thing.objects.all().order_by('-date_add')
+    th.query.group_by = ['collection']
+    categories = th[:9]
+    collections = M.Collection.objects.all().order_by('-data_create')[:2]
+    ret = {}
+    ret['collections'] = collections
+    ret['categories'] = categories
     return render(
         request,
         'app/index.html',
         {
             'title':'Home Page',
             'year':datetime.now().year,
+            'res': ret,
         }
     )
 

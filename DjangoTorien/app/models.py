@@ -4,6 +4,7 @@ Definition of models.
 
 from django.db import models
 from app import fields
+from colorfield.fields import ColorField
 
 # Create your models here.
 
@@ -11,6 +12,7 @@ class Gallery(models.Model):
     '''
     Галерея для конкретного товара
     '''
+    name = models.CharField(max_length=25, blank=True, verbose_name='Название фотки')
     image = models.ImageField(upload_to='gallery')
     thing = models.ForeignKey('Thing', on_delete=models.CASCADE, related_name='images')
 
@@ -20,6 +22,39 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Галерея товара'
         verbose_name_plural = 'Галерея товаров'
+
+
+class Size(models.Model):
+    '''
+    Размер для вещей
+    '''
+    #Text = models.CharField(max_length=50, verbose_name='Краткое название')
+    #thing = models.ForeignKey('Thing', on_delete=models.CASCADE, related_name='size')
+    rus = models.PositiveIntegerField(verbose_name='Русский размер')
+    all = models.CharField(max_length=7, verbose_name='Международный размер')
+
+    def __str__(self):
+        return "{} - [{}]".format(self.rus, self.all)
+
+    class Meta:
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
+
+
+class Color(models.Model):
+    '''
+    Цвет/а
+    '''
+    name = models.CharField(max_length=15, verbose_name='Название цвета')
+    value = ColorField(default='#FFFFFF')
+
+    def __str__(self):
+        return "{} - [{}]".format(self.name, self.value)
+
+    class Meta:
+        verbose_name = 'Цвет'
+        verbose_name_plural = 'Цвета'
+
 
 class Collection(models.Model):
     '''
@@ -69,11 +104,17 @@ class Thing(models.Model):
         стоимость
     '''
     name = models.CharField(max_length=50, verbose_name='Название товара')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория', related_name='categories')
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE, verbose_name='Изображения товара', related_name='images')
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, verbose_name='Из коллекции')
     cost = models.PositiveIntegerField(verbose_name='Цена')
-    color = fields.ColorField('Цвет обложки', default='#FF0000')
+    color = models.ManyToManyField(Color)
+    #color = fields.ColorField('Цвет обложки', default='#FF0000')
+    size = models.ManyToManyField(Size)
+    count = models.PositiveIntegerField(verbose_name='Количество', default=1)
+    date_add = models.DateField(verbose_name='Дата добавления',auto_now=True)
+    sale = models.PositiveIntegerField(verbose_name='Количество проданных')
+    favorite = models.PositiveIntegerField(verbose_name='Количество заказанных')
 
     def __str__(self):
         return self.name

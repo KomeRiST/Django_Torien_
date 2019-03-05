@@ -32,7 +32,10 @@ a:hover {
 /*
  * Base structure
  */
-.rowheight{height: 100%;}
+.rowheight {
+    height: 100%;
+    padding: 0 0.1%;
+}
 @media screen and (max-width: 767px){
     .collectionheight {
         height: 50%;
