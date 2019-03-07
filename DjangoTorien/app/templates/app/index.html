@@ -51,15 +51,18 @@
       <div class="parallax__layer parallax__layer--back">
           <div class="col-xs-4 rowheight">
               <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
+                  <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.0.thing__category__icon}});">
+                      <p>{{res.categories.0.thing__category__name}}</p>
+                  </div>
+              </div>
+              <div class="row category_index">
+                  <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
+                      <p>{{res.categories.1.thing__category__name}}</p>
                   </div>
               </div>
               <div class="row category_index">
                   <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
+                      {{res.categories.2.thing__category__name}}
                   </div>
               </div>
           </div>

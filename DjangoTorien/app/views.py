@@ -5,20 +5,21 @@ Definition of views.
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
+from django.db.models import Count, Min, Sum, Avg
 from datetime import datetime
 import app.models as M
 
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
-    #categories = M.Category.objects.all()[:9]
-    th = M.Thing.objects.all().order_by('-date_add')
-    th.query.group_by = ['collection']
-    categories = th[:9]
+    th = M.Relationship.objects.filter(thing__category_id__gte=0).values('thing__category', 'thing__category__name', 'thing__category__icon').annotate(thing_count=Sum('count'), thing_cost_min=Min('thing__cost'), thing_cost_avg=Avg('thing__cost')).order_by('-thing__date_add')[:9]
+    print(th.query)
+    print(th[0])
+    print(th[1])
     collections = M.Collection.objects.all().order_by('-data_create')[:2]
     ret = {}
     ret['collections'] = collections
-    ret['categories'] = categories
+    ret['categories'] = th
     return render(
         request,
         'app/index.html',

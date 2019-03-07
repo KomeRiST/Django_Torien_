@@ -108,13 +108,10 @@ class Thing(models.Model):
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE, verbose_name='Изображения товара', related_name='images')
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, verbose_name='Из коллекции')
     cost = models.PositiveIntegerField(verbose_name='Цена')
-    color = models.ManyToManyField(Color)
+    #color = models.ManyToManyField(Color)
     #color = fields.ColorField('Цвет обложки', default='#FF0000')
-    size = models.ManyToManyField(Size)
-    count = models.PositiveIntegerField(verbose_name='Количество', default=1)
-    date_add = models.DateField(verbose_name='Дата добавления',auto_now=True)
-    sale = models.PositiveIntegerField(verbose_name='Количество проданных')
-    favorite = models.PositiveIntegerField(verbose_name='Количество заказанных')
+    #size = models.ManyToManyField(Size)
+    date_add = models.DateField(verbose_name='Дата добавления',auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -123,3 +120,10 @@ class Thing(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
 
+class Relationship(models.Model):
+    thing = models.ForeignKey(Thing, related_name='things')
+    size = models.ForeignKey(Size, related_name='sizes')
+    color = models.ForeignKey(Color, related_name='colors')
+    count = models.PositiveIntegerField(verbose_name='Количество', default=1)
+    sale = models.PositiveIntegerField(verbose_name='Количество проданных', default=0)
+    favorite = models.PositiveIntegerField(verbose_name='Количество заказанных', default=0)

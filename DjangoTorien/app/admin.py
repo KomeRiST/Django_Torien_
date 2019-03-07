@@ -17,10 +17,14 @@ class GalleryInline(admin.TabularInline):
 #    fk_name = 'thing'
 #    model = Size
 
+class RelationshipInline(admin.TabularInline):
+    fk_name = 'thing'
+    model = Relationship
+    readonly_fields = ['sale', 'favorite',]
 
 @admin.register(Thing)
 class ThingAdmin(admin.ModelAdmin):
-    inlines = [GalleryInline,]
+    inlines = [RelationshipInline, GalleryInline]
     #formfield_overrides = {
     #    fields.ColorField: {'widget': forms.TextInput(attrs={'type': 'color', \
     #        'style': 'height: 100px; width: 100px;'})}
