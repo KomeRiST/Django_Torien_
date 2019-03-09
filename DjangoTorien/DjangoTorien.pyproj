@@ -63,6 +63,7 @@
     <Folder Include="DjangoTorien\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\icon_mouse_scroll.css" />
     <Content Include="app\static\app\content\parallax.css" />
     <Content Include="app\static\app\scripts\jquery-3.3.1.min.js" />
     <Content Include="app\static\app\scripts\jquery.video.js" />

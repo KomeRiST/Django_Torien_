@@ -5,21 +5,26 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/cover.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/icon_mouse_scroll.css' %}" />
 <script src="{% static 'app/scripts/jquery.video.js' %}"></script>
 
-<div class="parallax" id="parallax" data-vide-bg="/media/video.mp4">
+<div class="parallax" id="parallax">
     <div id="group1" class="parallax__group">
-      <div class="parallax__layer parallax__layer--base">
+      <div class="parallax__layer parallax__layer--base" data-vide-bg="/media/video.mp4">
+          <div id="scrll_mouse" style="position: absolute; bottom: 0px; left: 50%;  margin: auto; z-index: 1;">
+                <div class="mouse"></div>
+                <p>Scroll</p>
+          </div>
+        <!--<div class="title">
+                <h1 class="cover-heading">TORIEN</h1>
+            </div>
+          <div data-vide-bg="/media/video.mp4"></div>-->
+      </div>
+      <!--<div class="parallax__layer parallax__layer--fore">
         <div class="title">
                 <h1 class="cover-heading">TORIEN</h1>
             </div>
-          <!--<div data-vide-bg="/media/video.mp4"></div>-->
-      </div>
-      <div class="parallax__layer parallax__layer--fore">
-        <!--<div class="title">
-                <h1 class="cover-heading">TORIEN</h1>
-            </div>-->
-      </div>
+      </div>-->
     </div>
     <!--Отображение двух последних коллекций-->
     <div id="group2" class="parallax__group">
@@ -32,10 +37,10 @@
       </div>
       <div class="parallax__layer parallax__layer--base">
           <div class="row rowheight">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 collectionheight" style="background: url(/media/1.png) no-repeat;
-                    background-size: cover;
-                    background-position: center;">
-        </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 collectionheight" style="background: url(/media/1.png) no-repeat;
+                        background-size: cover;
+                        background-position: center;">
+            </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 collectionheight" style="background: url(/media/2.jpg) no-repeat;
                     background-size: cover;
                     background-position: center;">
@@ -49,38 +54,47 @@
     <div class="parallax__layer parallax__layer--base row">
      </div>
       <div class="parallax__layer parallax__layer--back">
-          <div class="col-xs-4 rowheight">
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.0.thing__category__icon}});">
-                      <p>{{res.categories.0.thing__category__name}}</p>
+              <div class="col-xs-4 rowheight">
+                  <div class="row category_index">
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.0.thing__category__icon}});">
+                          
+                      </div>
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs" style="height: 100%;">
+                          <p>{{res.categories.0.thing__category__name}}</p>
+                      </div>
+                      <!--Показать только на мобилах visible-xs-->
+                      <div class="col-xs-12 visible-xs" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
+                          <p>{{res.categories.1.thing__category__name}}</p>
+                      </div>
+                  </div>
+                  <div class="row category_index">
+                      <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
+                          <p>{{res.categories.1.thing__category__name}}</p>
+                      </div>
+                  </div>
+                  <div class="row category_index">
+                      <div class="col-12" style="height: 100%;">
+                          {{res.categories.2.thing__category__name}}
+                      </div>
                   </div>
               </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
-                      <p>{{res.categories.1.thing__category__name}}</p>
+              <div class="col-xs-4 rowheight">
+                  <div class="row category_index">
+                      <div class="col-12" style="height: 100%;">
+                      </div>
+                  </div>
+                  <div class="row category_index">
+                      <div class="col-12" style="height: 100%;">
+                      </div>
+                  </div>
+                  <div class="row category_index">
+                      <div class="col-12" style="height: 100%;">
+                      </div>
                   </div>
               </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                      {{res.categories.2.thing__category__name}}
-                  </div>
-              </div>
-          </div>
-          <div class="col-xs-4 rowheight">
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-          </div>
-          <div class="col-xs-4 rowheight">
+              <div class="col-xs-4 rowheight">
               <div class="row category_index">
                   <div class="col-12" style="height: 100%;">
                   </div>

@@ -121,6 +121,17 @@ body {
     background-image: url(pattern.png);
 }
 
+    /*.title:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        filter: blur(5px);
+    }*/
+
 
 /* style the groups
   --------------------------------------------- */
@@ -132,6 +143,7 @@ body {
 
 #group1 {
     z-index: 0; /* slide over group 2 */
+    background: black;
 }
 
 #group2 {
