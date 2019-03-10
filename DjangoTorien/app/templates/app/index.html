@@ -51,63 +51,75 @@
 
     <!--Самый задний слой-->
     <div id="group3" class="parallax__group">
-    <div class="parallax__layer parallax__layer--base row">
-     </div>
-      <div class="parallax__layer parallax__layer--back">
-              <div class="col-xs-4 rowheight">
-                  <div class="row category_index">
+    <div class="parallax__layer parallax__layer--base">
+          <div class="cont-flex">
+              {% for cat in res.categories %}
+                  <div class="category_index">
                       <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.0.thing__category__icon}});">
+                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
                           
                       </div>
                       <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs" style="height: 100%;">
-                          <p>{{res.categories.0.thing__category__name}}</p>
+                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
+                          <p>{{cat.thing__category__name}}</p>
                       </div>
                       <!--Показать только на мобилах visible-xs-->
-                      <div class="col-xs-12 visible-xs" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
-                          <p>{{res.categories.1.thing__category__name}}</p>
+                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          <p>{{cat.thing__category__name}}</p>
                       </div>
                   </div>
-                  <div class="row category_index">
-                      <div class="col-12" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{res.categories.1.thing__category__icon}});">
-                          <p>{{res.categories.1.thing__category__name}}</p>
+              {% endfor %}
+              {% for cat in res.categories %}
+                  <div class="category_index">
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          
+                      </div>
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
+                          <p>{{cat.thing__category__name}}</p>
+                      </div>
+                      <!--Показать только на мобилах visible-xs-->
+                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          <p>{{cat.thing__category__name}}</p>
                       </div>
                   </div>
-                  <div class="row category_index">
-                      <div class="col-12" style="height: 100%;">
-                          {{res.categories.2.thing__category__name}}
+              {% endfor %}
+              {% for cat in res.categories %}
+                  <a class="category_index" href="#group1">
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          
+                      </div>
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
+                          <p>{{cat.thing__category__name}}</p>
+                      </div>
+                      <!--Показать только на мобилах visible-xs-->
+                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          <p>{{cat.thing__category__name}}</p>
+                      </div>
+                  </a>
+              {% endfor %}
+              {% for cat in res.categories %}
+                  <div class="category_index">
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          
+                      </div>
+                      <!--Скрыть только на мобилах hidden-xs-->
+                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
+                          <p>{{cat.thing__category__name}}</p>
+                      </div>
+                      <!--Показать только на мобилах visible-xs-->
+                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                          <p>{{cat.thing__category__name}}</p>
                       </div>
                   </div>
-              </div>
-              <div class="col-xs-4 rowheight">
-                  <div class="row category_index">
-                      <div class="col-12" style="height: 100%;">
-                      </div>
-                  </div>
-                  <div class="row category_index">
-                      <div class="col-12" style="height: 100%;">
-                      </div>
-                  </div>
-                  <div class="row category_index">
-                      <div class="col-12" style="height: 100%;">
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xs-4 rowheight">
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
-              <div class="row category_index">
-                  <div class="col-12" style="height: 100%;">
-                  </div>
-              </div>
+              {% endfor %}
           </div>
+     </div>
+      <div class="parallax__layer parallax__layer--back">
       </div>
       <div class="parallax__layer parallax__layer--deep" style="background: url(/media/bg-fon.jpg) no-repeat center; background-size: cover;">
       </div>
@@ -135,8 +147,8 @@
 
     <!--footer-->
     <div id="group6" class="ugol parallax__group">
-      <div class="parallax__layer parallax__layer--base">
-        <div class="title">Base Layer</div>
+      <div class="parallax__layer parallax__layer--base footer-bg" style="background-image: url(/media/footer_2.png);">
+        <!--<div class="title">Base Layer</div>-->
       </div>
     </div>
   </div>
