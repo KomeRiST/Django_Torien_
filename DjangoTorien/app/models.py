@@ -116,6 +116,12 @@ class Thing(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def random_image(self):
+        glr = Gallery.objects.filter(thing=self.id).order_by('?')[:1]
+        print(glr)
+        return glr.image
+
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'

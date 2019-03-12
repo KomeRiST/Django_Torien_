@@ -1,0 +1,29 @@
+﻿{% extends "app/layout.html" %}
+    {% load staticfiles %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/collections.css' %}" />
+
+{% for it in '12' %}
+{% for item in res.collections %}
+<div style="/* background-color: black; */background-image: url(/media/{{item.image}});background-size: cover;background-position: center;background-attachment: fixed;height: 80vh;">
+    <!--<h1 class="title" style="position: relative;">{{item.name}}</h1>-->
+</div>
+<div class="text-center" style="min-height: 250px;">
+    <h1 style="position: relative;">{{item.name}}</h1>
+    <p>{{item.description}}</p>
+</div>
+{% endfor %}
+{% endfor %}
+
+<div style="background-color: #212121; height: 100vh;">
+    <h1 class="title" style="position: relative;">Ntrcn Text</h1>
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{% endblock %}

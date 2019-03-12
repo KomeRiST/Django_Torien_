@@ -1,0 +1,27 @@
+{% extends "app/layout.html" %}
+    {% load staticfiles %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/collections.css' %}" />
+
+            <div class="collections">
+            {% for it in '12' %}
+            {% for item in res.collections %}
+                <div class="collection-item" style="background-image: url(/media/{{item.image}}); background-size: cover; background-position: center;">
+                    <div class="overlay">
+                        <h1>{{item.name}}</h1>
+                        <p>{{item.description}}</p>
+                        <p><a href="/collections/{{item.id}}" class="btn btn-default" role="button">Подробнее &raquo;</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endfor %}
+            </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+{% endblock %}

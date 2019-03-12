@@ -32,7 +32,8 @@
         <div class="title">
                 <h1 class="cover-heading">Коллекции</h1>
                 {#<p class="lead">Любое, не особо длинное, но и не короткое описание данной коллекции с её преимуществами и отсутствующими недостатками.</p>#}
-                <p><a class="btn-default" href="/collections/">Подробнее</a></p>
+                <p><a class="btn-default" href="/collections/">Список коллекций вариант 1</a></p>
+                <p><a class="btn-default" href="/collections2/">Вариант 2 &raquo;</a></p>
             </div>
       </div>
       <div class="parallax__layer parallax__layer--base">
@@ -53,69 +54,27 @@
     <div id="group3" class="parallax__group">
     <div class="parallax__layer parallax__layer--base">
           <div class="cont-flex">
+              {% for s in '1234' %}
               {% for cat in res.categories %}
                   <div class="category_index">
                       <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
+                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing_img}});">
                           
                       </div>
                       <!--Скрыть только на мобилах hidden-xs-->
                       <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
-                          <p>{{cat.thing__category__name}}</p>
+                          <h4>{{cat.name}}</h4>
+                          <div class="description">
+                              <p>В наличии: {{cat.thing_count}} шт.</p>
+                              <p>Цена от: {{cat.thing_cost_min}} руб.</p>
+                          </div>
                       </div>
                       <!--Показать только на мобилах visible-xs-->
-                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          <p>{{cat.thing__category__name}}</p>
+                      <div class="col-xs-12 visible-xs visible-sm text-center" style="height: 100%;background-size: cover;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing_img}});">
+                          <h4>{{cat.name}}</h4>
                       </div>
                   </div>
               {% endfor %}
-              {% for cat in res.categories %}
-                  <div class="category_index">
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          
-                      </div>
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                      <!--Показать только на мобилах visible-xs-->
-                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                  </div>
-              {% endfor %}
-              {% for cat in res.categories %}
-                  <a class="category_index" href="#group1">
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          
-                      </div>
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                      <!--Показать только на мобилах visible-xs-->
-                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                  </a>
-              {% endfor %}
-              {% for cat in res.categories %}
-                  <div class="category_index">
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          
-                      </div>
-                      <!--Скрыть только на мобилах hidden-xs-->
-                      <div class="col-md-6 hidden-xs hidden-sm text-center" style="height: 100%;">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                      <!--Показать только на мобилах visible-xs-->
-                      <div class="col-xs-12 visible-xs visible-sm" style="height: 100%;background-size: contain;background-position: center;background-repeat: no-repeat;background-image: url(/media/{{cat.thing__category__icon}});">
-                          <p>{{cat.thing__category__name}}</p>
-                      </div>
-                  </div>
               {% endfor %}
           </div>
      </div>
@@ -138,7 +97,7 @@
     <!--pre-footer-->
     <div id="group5" class="parallax__group">
       <div class="parallax__layer parallax__layer--back" style="background: url(/media/bg-fon-2.jpg) no-repeat center;background-size: cover;">
-        <div class="title">Background Layer</div>
+        <!--<div class="title">Background Layer</div>-->
       </div>
       <div class="parallax__layer parallax__layer--base">
         <div class="title">Base Layer</div>
@@ -146,11 +105,15 @@
     </div>
 
     <!--footer-->
-    <div id="group6" class="ugol parallax__group">
-      <div class="parallax__layer parallax__layer--base footer-bg" style="background-image: url(/media/footer_2.png);">
-        <!--<div class="title">Base Layer</div>-->
-      </div>
+    <div id="group6" class="parallax__group">
+        <div class="parallax__layer parallax__layer--back footer-bg" style="background: -webkit-linear-gradient(top, rgba(33, 33, 33, 0) 0%,rgba(33, 33, 33, 1) 50%);z-index: 0;">
+        </div>
+        <div class="parallax__layer parallax__layer--back footer-bg" style="background-image: url(/media/footer_2.png);z-index: 1;">
+        </div>
+        <div class="parallax__layer parallax__layer--base" style="background-image: url(/media/footer-site-name.png);background-repeat: no-repeat;background-position-x: center;z-index: 0;">
+            <!--<div class="title">Base Layer</div>-->
+        </div>
     </div>
-  </div>
+ </div>
 
 {% endblock %}

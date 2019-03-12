@@ -19,8 +19,10 @@ from django.contrib import admin
 urlpatterns = [
     # Examples:
     url(r'^$', app.views.home, name='home'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about$', app.views.about, name='about'),
+    url(r'^contact/$', app.views.contact, name='contact'),
+    url(r'^about/$', app.views.about, name='about'),
+    url(r'^collections/$', app.views.collections, name='collections'),
+    url(r'^collections2/$', app.views.collections2, name='collections'),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {
@@ -32,13 +34,13 @@ urlpatterns = [
                 'year': datetime.now().year,
             }
         },
-        name='login'),
+        name='login'), # login
     url(r'^logout$',
         django.contrib.auth.views.logout,
         {
             'next_page': '/',
         },
-        name='logout'),
+        name='logout'), # logout
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
