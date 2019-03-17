@@ -40,11 +40,17 @@ a:hover {
     .collectionheight {
         height: 50%;
     }
+        .collectionheight:nth-child(2) {
+            transform: scaleY(-1);
+        }
 }
 @media screen and (min-width: 768px) {
     .collectionheight {
         height: 100%;
     }
+        .collectionheight:nth-child(2) {
+            transform: scaleX(-1);
+        }
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {

@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+    {% load staticfiles %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/collection.css' %}" />
+
+<div class="coll-img" style="background:url(/media/{{res.collection.image}}) no-repeat; background-size: cover; background-position: center;"></div>
+<div class="coll-opis text-center"">
+    <h1>{{res.collection.name}}</h1>
+    <hr />
+    <p class="lead">{{res.collection.description}}</p>
+    <hr />
+    <p class="text-right">Дата публикации: <small>{{res.collection.data_create}}</small></p>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+{% endblock %}

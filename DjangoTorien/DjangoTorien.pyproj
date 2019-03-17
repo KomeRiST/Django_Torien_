@@ -63,6 +63,8 @@
     <Folder Include="DjangoTorien\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\static\app\content\collection.css" />
+    <Content Include="app\templates\app\collection.html" />
     <Content Include="app\templates\app\collections.html" />
     <Content Include="app\static\app\content\collections.css" />
     <Content Include="app\static\app\content\icon_mouse_scroll.css" />

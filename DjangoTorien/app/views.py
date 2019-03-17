@@ -49,9 +49,9 @@ def home(request):
        app_category ON (app_thing."category_id" = app_category."id") \
  GROUP BY app_thing."category_id"\
  ORDER BY app_thing."date_add" DESC;')
-    collections = M.Collection.objects.all().order_by('-data_create')[:2]
+    collections = M.Collection.objects.all().order_by('-data_create')[:1]
     ret = {}
-    ret['collections'] = collections
+    ret['collection'] = collections
     ret['categories'] = th
     return render(
         request,
@@ -84,6 +84,21 @@ def about(request):
         'app/about.html',
         {
             'title':'About',
+            'message':'Your application description page.',
+            'year':datetime.now().year,
+        }
+    )
+
+def collection(request, _id):
+    assert isinstance(request, HttpRequest)
+    res = {}
+    res["collection"] = M.Collection.objects.get(id=_id)
+    return render(
+        request,
+        'app/collection.html',
+        {
+            'res': res,
+            'title':'Коллекции',
             'message':'Your application description page.',
             'year':datetime.now().year,
         }
