@@ -70,8 +70,8 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact',
-            'message':'Your contact page.',
+            'title':'Контакты',
+            'message':'Наши контакты',
             'year':datetime.now().year,
         }
     )
@@ -86,6 +86,24 @@ def about(request):
             'title':'About',
             'message':'Your application description page.',
             'year':datetime.now().year,
+        }
+    )
+
+def catalog(request):
+    """Renders the about page."""
+    assert isinstance(request, HttpRequest)
+    th = M.Thing.objects.all()
+    res = {}
+    res['things'] = th
+
+    return render(
+        request,
+        'app/catalog.html',
+        {
+            'title':'Каталог',
+            'message':'Каталог товаров',
+            'year':datetime.now().year,
+            'res': res,
         }
     )
 

@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h1 class="text-center">{{ message }}</h1>
+<div class="text-center" style="margin: 0 auto;">
+    <!-- Одна кнопка -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+</div>
+<div class="">
+    {% for item in res.things %}
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="/media/{{item.random_image}}" alt="{{item.name}}">
+            <div class="caption">
+                <h3>{{item.name}}</h3>
+                <p>цвета</p>
+                <p>Цена: {{item.cost}}</p>
+                <p><a href="#" class="btn btn-primary" role="button">В корзину</a> <a href="#" class="btn btn-default" role="button">Подробнее &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+        {% endblock %}

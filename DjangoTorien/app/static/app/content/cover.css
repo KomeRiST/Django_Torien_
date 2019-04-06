@@ -36,6 +36,11 @@ a:hover {
     height: 100%;
     padding: 0 0.1%;
 }
+
+.item-col {
+    display: block;
+}
+
 @media screen and (max-width: 767px){
     .collectionheight {
         height: 50%;
@@ -43,6 +48,9 @@ a:hover {
         .collectionheight:nth-child(2) {
             transform: scaleY(-1);
         }
+    .item-col {
+        height: 50%;
+    }
 }
 @media screen and (min-width: 768px) {
     .collectionheight {
@@ -51,6 +59,9 @@ a:hover {
         .collectionheight:nth-child(2) {
             transform: scaleX(-1);
         }
+    .item-col {
+        height: 100%;
+    }
 }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {

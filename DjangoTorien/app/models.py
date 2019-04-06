@@ -119,8 +119,14 @@ class Thing(models.Model):
     @property
     def random_image(self):
         glr = Gallery.objects.filter(thing=self.id).order_by('?')[:1]
-        print(glr)
-        return glr.image
+        if glr.count() == 0:
+            return "/gallery/default.jpg"
+        r = glr[0].image
+        #glr = Gallery.objects.get(thing=self.id)
+        #print(glr)
+        #print(glr.image)
+        #print(glr[0])
+        return r
 
     class Meta:
         verbose_name = 'Товар'

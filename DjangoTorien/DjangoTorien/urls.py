@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^$', app.views.home, name='home'),
     url(r'^contact/$', app.views.contact, name='contact'),
     url(r'^about/$', app.views.about, name='about'),
+    url(r'^catalog/$', app.views.catalog, name='catalog'),
     url(r'^collection/(?P<_id>[0-9])/$', app.views.collection, name='collection'),
     url(r'^collections/$', app.views.collections, name='collections'),
     url(r'^collections2/$', app.views.collections2, name='collections2'),
