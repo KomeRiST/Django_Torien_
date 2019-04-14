@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 
 import app.forms
 import app.views
+import app.api
 
 # Uncomment the next lines to enable the admin:
 from django.conf.urls import include
@@ -43,6 +44,11 @@ urlpatterns = [
             'next_page': '/',
         },
         name='logout'), # logout
+
+    # API url
+    url(r'^api/getCategory$', app.api.APIgetcategory, name='APIgetcategory'),
+    url(r'^api/getThings', app.api.APIgetthings, name='APIgetthings'),
+
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -5,20 +5,34 @@
 <h1 class="text-center">{{ message }}</h1>
 <div class="text-center" style="margin: 0 auto;">
     <!-- Одна кнопка -->
-    <div class="btn-group">
+    <div id="btnSize" class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Action <span class="caret"></span>
+            Размеры <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li date="-1">Все размеры</li>
+            <li date="1">42 (S)</li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li date="2">44 (M)</li>
+            <li date="3">46 (M)</li>
+        </ul>
+    </div>
+    <div id="btnCategory" class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Категории <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li date="-1">Выберите размер</li>
         </ul>
     </div>
 </div>
-<div class="">
+<div id="error">
+
+</div>
+<div id="success">
+
+</div>
+<div class="things">
     {% for item in res.things %}
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
@@ -33,4 +47,63 @@
     </div>
     {% endfor %}
 </div>
-        {% endblock %}
+<script>
+    $("#btnSize .dropdown-menu li").click(function () {
+        $("#btnSize button").html('Размеры <strong>' + $(this).html() + '</strong> <span class="caret"></span>');
+        $("#btnSize button").attr('date', $(this).attr('date'));
+        $.ajax({
+            url: "/api/getCategory",
+            data: {
+                size: $(this).attr("date")
+            },
+            success: function (result) {
+                //$("#success").html("<strong> success: " + result + "</strong>"); ' (' + result[index]["thing_count"] + ' шт. | от ' + result[index]["thing_cost_min"] + ' р.)
+                H = '';
+                for (index = 0, len = result.length; index < len; ++index) {
+                    H += '<li onclick="btnCategory(this)" date="' + result[index]["thing__category__id"] + '">' + result[index]["name"] + '</li>';
+                };
+                $("#btnCategory .dropdown-menu").html(H)
+            },
+            error: function (result) {
+                $("#error").html("<strong> error: " + result + "</strong>");
+            }
+        })
+    });
+
+    function btnCategory (e) {
+        $("#btnCategory button").html('Категория <strong>' + $(e).html() + '</strong> <span class="caret"></span>');
+        $("#btnCategory button").attr('date', $(e).attr('date'));
+        $.ajax({
+            url: "/api/getThings",
+            data: {
+                size: $("#btnSize button").attr("date"),
+                category: $(e).attr("date")
+            },
+            success: function (result) {
+                console.log(result);
+                //$("#success").html("<strong> success: " + result + "</strong>"); ' (' + result[index]["thing_count"] + ' шт. | от ' + result[index]["thing_cost_min"] + ' р.)
+                H = '';
+                for (index = 0, len = result.length; index < len; ++index) {
+                    img = (result[index]["image"] == null) ? '/gallery/default.jpg' : result[index]["image"];
+                    H +=
+                        '<div class="col-sm-6 col-md-3">\
+        <div class="thumbnail">\
+            <img src="/media'+ img + '" alt="' + result[index]["name"] + '">\
+            <div class="caption">\
+                <h3>'+ result[index]["name"] + '</h3>\
+                <p>цвета</p>\
+                <p>Цена: '+ result[index]["cost"] + '</p>\
+                <p><a href="#" class="btn btn-primary" role="button">В корзину</a> <a href="#" class="btn btn-default" role="button">Подробнее &raquo;</a></p>\
+            </div>\
+        </div>\
+    </div>';
+                };
+                $(".things").html(H)
+            },
+            error: function (result) {
+                $("#error").html("<strong> error: " + result + "</strong>");
+            }
+        })
+    }
+    </script>
+{% endblock %}

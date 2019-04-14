@@ -84,6 +84,14 @@ class Category(models.Model):
     icon = models.ImageField(upload_to='category_icon', verbose_name='Иконка категории')
     name = models.CharField(max_length=50, verbose_name='Название категории')
 
+    @property
+    def haveSize(self, s):
+        r = Relationship.objects.filter(size=s)
+        if r.count() > 0:
+            return True
+        else:
+            return False
+
     def __str__(self):
         return self.name
 
