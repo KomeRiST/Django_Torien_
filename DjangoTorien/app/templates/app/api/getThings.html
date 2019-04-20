@@ -1,0 +1,13 @@
+﻿    {% for item in res.things %}
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <img src="/media/{{item.random_image}}" alt="{{item.name}}">
+            <div class="caption">
+                <h3>{{item.name}}</h3>
+                <p>цвета</p>
+                <p>Цена: {{item.cost}}</p>
+                <p><a href="#" class="btn btn-primary" role="button">В корзину</a> <a href="#" class="btn btn-default" role="button">Подробнее &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}

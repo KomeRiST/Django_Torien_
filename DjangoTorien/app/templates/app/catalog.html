@@ -33,7 +33,7 @@
 
 </div>
 <div class="things">
-    {% for item in res.things %}
+    <!--{% for item in res.things %}
     <div class="col-sm-6 col-md-3">
         <div class="thumbnail">
             <img src="/media/{{item.random_image}}" alt="{{item.name}}">
@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-    {% endfor %}
+    {% endfor %}-->
 </div>
 <script>
     $("#btnSize .dropdown-menu li").click(function () {
@@ -88,7 +88,7 @@
                     H +=
                         '<div class="col-sm-6 col-md-3">\
         <div class="thumbnail">\
-            <img src="/media'+ img + '" alt="' + result[index]["name"] + '">\
+            <img src="/media/'+ img + '" alt="' + result[index]["name"] + '">\
             <div class="caption">\
                 <h3>'+ result[index]["name"] + '</h3>\
                 <p>цвета</p>\
