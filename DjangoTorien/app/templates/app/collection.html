@@ -4,15 +4,36 @@
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/parallax.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/collection.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/cover.css' %}" />
 
-<div class="coll-img" style="background:url(/media/{{res.collection.image}}) no-repeat; background-size: cover; background-position: center;"></div>
-<div class="coll-opis text-center"">
-    <h1>{{res.collection.name}}</h1>
-    <hr />
-    <p class="lead">{{res.collection.description}}</p>
-    <hr />
-    <p class="text-right">Дата публикации: <small>{{res.collection.data_create}}</small></p>
-</div>
+<div class="parallax" id="parallax" style="overflow-y: auto;">
+    <div id="group1" class="parallax__group">
+        <div class="parallax__layer parallax__layer--base">
+            <div class="row rowheight">
+                <div class="coll-opis text-center">
+                    <h1>{{res.collection.name}}</h1>
+                    <hr />
+                    <p class="lead">{{res.collection.description}}</p>
+                    <hr />
+                    <p class="text-right">Дата публикации: <small>{{res.collection.data_create}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="group2" class="parallax__group">
+        <div class="parallax__layer parallax__layer--base">
+            <div class="row rowheight"></div>
+        </div>
+        <div class="parallax__layer parallax__layer--back" style="background:url('/media/{{res.collection.image_blur}}') no-repeat; background-size: cover; background-position: center;">
+        </div>
+    </div>
+    <div id="group3" class="parallax__group">
+        <div class="parallax__layer parallax__layer--base">
+            <div class="row rowheight"></div>
+        </div>
+    </div>
+ </div>
+
 {% endblock %}
 
 

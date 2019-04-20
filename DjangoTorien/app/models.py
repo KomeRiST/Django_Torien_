@@ -5,7 +5,9 @@ Definition of models.
 from django.db import models
 from app import fields
 from colorfield.fields import ColorField
-
+from PIL import Image, ImageFilter
+from transliterate import translit
+import os
 # Create your models here.
 
 class Gallery(models.Model):
@@ -55,6 +57,8 @@ class Color(models.Model):
         verbose_name = 'Цвет'
         verbose_name_plural = 'Цвета'
 
+def translite(instance, filename):
+    return 'collections/{0}/original.jpg'.format(translit(instance.name, 'ru', reversed=True))
 
 class Collection(models.Model):
     '''
@@ -63,11 +67,29 @@ class Collection(models.Model):
     '''
     name = models.CharField(max_length=50, verbose_name='Название коллекции')
     description = models.CharField(max_length=250, verbose_name='Описание коллекции')
-    image = models.ImageField(verbose_name='Общее фото коллекции')
+    image = models.ImageField(upload_to=translite, verbose_name='Общее фото коллекции')
     data_create = models.DateField(verbose_name='Дата создания коллекции')
 
     def __str__(self):
         return self.name
+
+    @property
+    def image_blur(self):
+        return 'collections/{0}/blur.jpg'.format(translit(self.name, 'ru', reversed=True))
+
+    def save(self, *args, **kwargs):
+		# Сначала - обычное сохранение
+        super(Collection, self).save(*args, **kwargs)
+		# Для начала проверим наличие картинки
+        if self.image:
+			# Начинаем процедуру размытия картинки
+            path = self.image.path
+            img = Image.open(path)
+            newimg = img.copy()
+            newimg = img.filter(ImageFilter.GaussianBlur(radius=7))
+            filename = os.path.dirname(path)+'\\blur.jpg'
+            newimg.save(filename)
+
 
     class Meta:
         verbose_name = 'Коллекция одежды'
